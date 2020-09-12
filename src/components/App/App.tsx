@@ -4,14 +4,17 @@ import { Header } from "../Header";
 import { ProductsView } from "../ProductsView";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../../services/apolloClient";
+import { ShoppingCartProvider } from "../../context/ShoppingCartContext";
 
 function App(): React.ReactElement {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <Header />
-        <ProductsView />
-      </div>
+      <ShoppingCartProvider>
+        <div className="App">
+          <Header />
+          <ProductsView />
+        </div>
+      </ShoppingCartProvider>
     </ApolloProvider>
   );
 }
