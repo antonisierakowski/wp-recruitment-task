@@ -9,9 +9,7 @@ export const AddToCartInput: React.FC<Props> = ({ id }: Props) => {
   const { addItem } = useContext(ShoppingCartContext)
   const [ quantity, setQuantity ] = useState<string>('0')
 
-  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>): void => {
-    setQuantity(event.target.value)
-  }, []);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => setQuantity(event.target.value);
 
   const onSubmit = useCallback((event: React.FormEvent): void => {
     event.preventDefault();
