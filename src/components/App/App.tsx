@@ -1,11 +1,18 @@
 import React from 'react';
-import logo from '../../logo.svg';
 import './App.css';
+import { Header } from "../Header";
+import { ProductsView } from "../ProductsView";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../../services/apolloClient";
 
-function App() {
+function App(): React.ReactElement {
   return (
-    <div className="App">
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Header />
+        <ProductsView />
+      </div>
+    </ApolloProvider>
   );
 }
 
