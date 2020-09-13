@@ -1,5 +1,7 @@
 import React from "react";
 import { AddToCartInput } from "../AddToCartInput";
+import styles from './styles.module.css';
+import classNames from 'classnames';
 
 type Props = {
   id: string,
@@ -10,22 +12,43 @@ type Props = {
 }
 
 export const ProductTile: React.FC<Props> = (props: Props) => (
-  <div>
-    <p>{props.name}</p>
-    {renderManufacturers(props)}
-    {renderPrice(props)}
-    {props.isInStock && <AddToCartInput id={props.id} />}
+  <div className={styles.productTile}>
+    <div className={styles.upperSection}>
+      <h2 className={styles.productName}>{props.name}</h2>
+      {renderManufacturers(props)}
+    </div>
+    <div className={styles.lowerSection}>
+      {renderPrice(props)}
+      {props.isInStock && <AddToCartInput id={props.id} />}
+    </div>
   </div>
 )
 
-function renderManufacturers(props: Props): React.ReactElement[] {
-  return props.manufacturers.map(manufacturer => (
-    <p key={manufacturer}>{manufacturer}</p>
-  ));
+function renderManufacturers(props: Props): React.ReactElement {
+  return (
+    <ul className={styles.manufacturersList}>
+      {props.manufacturers.map(manufacturer => (
+        <li
+          className={styles.manufacturerListItem}
+          key={manufacturer}
+        >
+          {manufacturer}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 function renderPrice(props: Props): React.ReactElement {
+  const priceClassNames = classNames(styles.price, {
+    [styles.outOfStock]: !props.isInStock,
+  })
+
   return (
-    <p>{props.isInStock ? `${props.price} credits` : 'Out of stock'}</p>
+    <span
+      className={priceClassNames}
+    >
+      {props.isInStock ? `${props.price} credits` : 'Out of stock'}
+    </span>
   )
 }
