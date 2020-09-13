@@ -8,16 +8,12 @@ export type Props = {
 }
 
 export const AddToCartInput: React.FC<Props> = (props: Props) => {
-  const { quantity, onSubmit, onChange, isInvalid } = useAddToCartInput(props)
-
-  const inputClassNames = classNames(styles.input, {
-    [styles.error]: isInvalid,
-  })
+  const { quantity, onSubmit, onChange } = useAddToCartInput(props)
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <input
-        className={inputClassNames}
+        className={styles.input}
         type="number"
         value={quantity}
         onChange={onChange}
