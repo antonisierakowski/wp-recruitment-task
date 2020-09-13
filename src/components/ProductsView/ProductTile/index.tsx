@@ -13,11 +13,11 @@ type Props = {
 
 export const ProductTile: React.FC<Props> = (props: Props) => (
   <div className={styles.productTile}>
-    <div className={styles.upperSection}>
+    <div>
       <h3 className={styles.productName}>{props.name}</h3>
       {renderManufacturers(props)}
     </div>
-    <div className={styles.lowerSection}>
+    <div className={styles.priceSection}>
       {renderPrice(props)}
       {props.isInStock && <AddToCartInput id={props.id} />}
     </div>
@@ -48,7 +48,7 @@ function renderPrice(props: Props): React.ReactElement {
     <span
       className={priceClassNames}
     >
-      {props.isInStock ? `${props.price} credits` : 'Out of stock'}
+      {props.isInStock ? `${props.price} cred.` : 'Out of stock'}
     </span>
   )
 }

@@ -1,4 +1,16 @@
 .form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    width: 2rem;
+    align-self: flex-end;
+}
+
+.submitBtn {
+    height: 1.25rem;
+    width: 5.5rem;
     margin-top: 5px;
 }
 

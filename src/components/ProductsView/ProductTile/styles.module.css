@@ -11,16 +11,13 @@
     justify-content: space-between;
 }
 
-.upperSection {
-
-}
-
-.lowerSection {
-
+.priceSection {
+    display: flex;
+    justify-content: space-between;
 }
 
 .productName {
-    margin: 0;
+    margin: 0 0 0.25rem 0;
     line-height: 1;
 }
 
@@ -36,10 +33,12 @@
 }
 
 .price {
-
+    align-self: flex-end;
 }
 
 .outOfStock {
     color: #F53629;
+    width: 100%;
+    text-align: center;
 }
 
