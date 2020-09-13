@@ -1,6 +1,6 @@
 .app {
     display: flex;
     flex-direction: column;
-    background-color: #FDECF3;
+    background-color: var(--color-bg-primary);
     min-height: 100vh;
 }

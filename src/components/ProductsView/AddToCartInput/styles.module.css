@@ -15,5 +15,5 @@
 }
 
 .error {
-    border-color: #F53629;
+    border-color: var(--color-error);
 }
