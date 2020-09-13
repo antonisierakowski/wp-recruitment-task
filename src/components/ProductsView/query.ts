@@ -1,16 +1,16 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export interface StarshipStock {
   allStarships: {
-    starships: Starship[],
-  },
+    starships: Starship[];
+  };
 }
 
 export interface Starship {
-  costInCredits?: number,
-  id: string,
-  manufacturers: string[],
-  name: string,
+  costInCredits?: number;
+  id: string;
+  manufacturers: string[];
+  name: string;
 }
 
 export const STARSHIP_STOCK = gql`
@@ -24,4 +24,4 @@ export const STARSHIP_STOCK = gql`
       }
     }
   }
-`
+`;

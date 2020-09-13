@@ -1,10 +1,10 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { ProductTile } from "./ProductTile";
-import { Starship, STARSHIP_STOCK, StarshipStock } from "./query";
-import styles from './styles.module.css'
-import { LoadingIndicator } from "./LoadingIndicator";
-import { ErrorIndicator } from "./ErrorIndicator";
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import { ProductTile } from './ProductTile';
+import { Starship, STARSHIP_STOCK, StarshipStock } from './query';
+import styles from './styles.module.css';
+import { LoadingIndicator } from './LoadingIndicator';
+import { ErrorIndicator } from './ErrorIndicator';
 
 export const ProductsView: React.FC = () => {
   const { loading, error, data } = useQuery<StarshipStock>(STARSHIP_STOCK);
@@ -15,8 +15,8 @@ export const ProductsView: React.FC = () => {
       {error && <ErrorIndicator />}
       {data && mapStarshipsToProductTiles(data.allStarships.starships)}
     </section>
-  )
-}
+  );
+};
 
 function mapStarshipsToProductTiles(data: Starship[]): React.ReactElement[] {
   return data.map(product => (
@@ -24,13 +24,17 @@ function mapStarshipsToProductTiles(data: Starship[]): React.ReactElement[] {
       key={product.id}
       id={product.id}
       name={product.name}
-      price={product.costInCredits ? addSeparators(product.costInCredits) : undefined}
+      price={
+        product.costInCredits ? addSeparators(product.costInCredits) : undefined
+      }
       manufacturers={product.manufacturers}
-      isInStock={product.costInCredits !== null && product.costInCredits !== undefined}
+      isInStock={
+        product.costInCredits !== null && product.costInCredits !== undefined
+      }
     />
-  ))
+  ));
 }
 
 function addSeparators(price: number): string {
-  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
- }
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}

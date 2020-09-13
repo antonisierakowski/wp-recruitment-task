@@ -1,33 +1,39 @@
-import { Props as AddToCartInputProps } from "./index";
-import React, { useCallback, useContext, useState } from "react";
-import { ShoppingCartContext } from "../../../context/ShoppingCartContext";
+import { Props as AddToCartInputProps } from './index';
+import React, { useCallback, useContext, useState } from 'react';
+import { ShoppingCartContext } from '../../../context/ShoppingCartContext';
 
 export type AddToCartInputHook = {
-  quantity: string,
-  onSubmit: (event: React.FormEvent) => void,
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-}
+  quantity: string;
+  onSubmit: (event: React.FormEvent) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
-export const useAddToCartInput = ({ id }: AddToCartInputProps): AddToCartInputHook => {
-  const { addItem } = useContext(ShoppingCartContext)
-  const [ quantity, setQuantity ] = useState<string>('0')
+export const useAddToCartInput = ({
+  id,
+}: AddToCartInputProps): AddToCartInputHook => {
+  const { addItem } = useContext(ShoppingCartContext);
+  const [quantity, setQuantity] = useState<string>('0');
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => setQuantity(event.target.value);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void =>
+    setQuantity(event.target.value);
 
-  const onSubmit = useCallback((event: React.FormEvent): void => {
-    event.preventDefault();
-    const parsedQuantity = parseInt(quantity)
-    if (validateQuantity(parsedQuantity)) {
-      addItem(id, parsedQuantity);
-    }
-  }, [id, quantity, addItem])
+  const onSubmit = useCallback(
+    (event: React.FormEvent): void => {
+      event.preventDefault();
+      const parsedQuantity = parseInt(quantity);
+      if (validateQuantity(parsedQuantity)) {
+        addItem(id, parsedQuantity);
+      }
+    },
+    [id, quantity, addItem],
+  );
 
   return {
     quantity,
     onSubmit,
     onChange,
-  }
-}
+  };
+};
 
 const validateQuantity = (value: number): boolean => {
   if (Number.isNaN(value)) {
@@ -37,4 +43,4 @@ const validateQuantity = (value: number): boolean => {
     return false;
   }
   return true;
-}
+};
