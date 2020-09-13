@@ -1,7 +1,6 @@
 import React from "react";
 import { useAddToCartInput } from "./hook";
 import styles from './styles.module.css'
-import classNames from "classnames";
 
 export type Props = {
   id: string,
