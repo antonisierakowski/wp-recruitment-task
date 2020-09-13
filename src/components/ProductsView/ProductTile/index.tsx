@@ -14,7 +14,7 @@ type Props = {
 export const ProductTile: React.FC<Props> = (props: Props) => (
   <div className={styles.productTile}>
     <div className={styles.upperSection}>
-      <h2 className={styles.productName}>{props.name}</h2>
+      <h3 className={styles.productName}>{props.name}</h3>
       {renderManufacturers(props)}
     </div>
     <div className={styles.lowerSection}>

@@ -22,9 +22,13 @@ function mapStarshipsToProductTiles(data: Starship[]): React.ReactElement[] {
       key={product.id}
       id={product.id}
       name={product.name}
-      price={product.costInCredits?.toString()}
+      price={product.costInCredits ? addSeparators(product.costInCredits) : undefined}
       manufacturers={product.manufacturers}
       isInStock={product.costInCredits !== null && product.costInCredits !== undefined}
     />
   ))
 }
+
+function addSeparators(price: number): string {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+ }
