@@ -3,14 +3,16 @@ import { useQuery } from "@apollo/client";
 import { ProductTile } from "./ProductTile";
 import { Starship, STARSHIP_STOCK, StarshipStock } from "./query";
 import styles from './styles.module.css'
+import { LoadingIndicator } from "./LoadingIndicator";
+import { ErrorIndicator } from "./ErrorIndicator";
 
 export const ProductsView: React.FC = () => {
   const { loading, error, data } = useQuery<StarshipStock>(STARSHIP_STOCK);
 
   return (
     <section className={styles.productsView}>
-      {loading && <p>Loading placeholder</p>}
-      {error && <p>Error placeholder</p>}
+      {loading && <LoadingIndicator />}
+      {error && <ErrorIndicator />}
       {data && mapStarshipsToProductTiles(data.allStarships.starships)}
     </section>
   )
