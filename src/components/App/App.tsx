@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import styles from './styles.module.css';
 import { Header } from "../Header";
 import { ProductsView } from "../ProductsView";
 import { ApolloProvider } from "@apollo/client";
@@ -10,7 +10,7 @@ function App(): React.ReactElement {
   return (
     <ApolloProvider client={client}>
       <ShoppingCartProvider>
-        <div className="App">
+        <div className={styles.app}>
           <Header />
           <ProductsView />
         </div>

@@ -1,9 +1,10 @@
 import React from "react";
-import { ShoppingCart } from "./ShoppingCart";
+import { ShoppingCartIcon } from "./ShoppingCartIcon";
+import styles from './styles.module.css'
 
 export const Header: React.FC = () => (
-  <header>
+  <header className={styles.header}>
     <span>WP Recruitment Task</span>
-    <ShoppingCart />
+    <ShoppingCartIcon />
   </header>
 )

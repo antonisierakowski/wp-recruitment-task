@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const ProductTile: React.FC<Props> = (props: Props) => (
-  <div style={{border: '1px solid black'}}>
+  <div>
     <p>{props.name}</p>
     {renderManufacturers(props)}
     {renderPrice(props)}
